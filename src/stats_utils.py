@@ -42,3 +42,5 @@ def analyser_sales(df):
 
 # 6. Exécuter la fonction
 analyser_sales(sales)
+
+# modification code test
