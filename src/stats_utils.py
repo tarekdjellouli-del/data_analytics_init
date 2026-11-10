@@ -1,14 +1,17 @@
+
+
+
 import pandas as pd
 
-def analyser_sales(sales):
+# 1. Charger les données depuis le fichier CSV
+sales = pd.read_csv("data/sales.csv")
 
-    # 1. Création du DataFrame
-    df = pd.DataFrame({"montant": sales})
 
-    # 2. Nettoyage : conserver uniquement les montants positifs
-    df = df[df["montant"] > 0]
+def analyser_sales(df):
 
-    # Vérification
+    # 2. Nettoyage : conserver les montants positifs
+    df = df[df["montant"] > 0].copy()
+
     if df.empty:
         return "Aucune transaction valide"
 
@@ -32,8 +35,10 @@ def analyser_sales(sales):
     print("Écart-type :", round(ecart_type, 2))
     print("Maximum :", maximum, "€")
     print("Minimum :", minimum, "€")
+
     print("\nAnomalies détectées :")
     print(anomalies)
-sales = [150, 200, 300, 450, 500, -50, 0, 1200, 250]
 
+
+# 6. Exécuter la fonction
 analyser_sales(sales)
